@@ -20,8 +20,8 @@ int main() {
 
     for (;;) {
 
-        char buf[4096];
-        int n = read(fd, buf, 4096);
+        char buf[1];
+        int n = read(fd, buf, 1);
         if (n == 0) {
             printf("file ended!");
             break;
