@@ -43,7 +43,7 @@ How does OS know which code to run on a trap? Calling process can’t specify lo
 
 A **system call number** is assigned to each sys call which informs the OS of the code to execute. These numbers and the sys call args are carefully put into predefined registers. A lot of this is hardcoded into assembly with conventions. 
 
-![Screenshot 2024-10-13 at 6.10.12 PM.png](3%20Limited%20Direct%20Execution%202669f918182944ee87a62f49dc3c03f9/Screenshot_2024-10-13_at_6.10.12_PM.png)
+![Screenshot 2024-10-13 at 6.10.12 PM.png](static/Screenshot_2024-10-13_at_6.10.12_PM.png)
 
 **Regaining Control**
 
@@ -54,4 +54,4 @@ Another problem the OS needs to deal with is to make sure it has control of the 
 
 After regaining control, the OS has to decide what to do next (resume same process or switch). **Scheduler** makes this decision; a switch causes a **context switch**. A context switch conceptually just needs storing the running processes’s state in a few register values, and restoring the state for the other process the OS wants to switch to.  State includes PC, stack pointer, general purpose registers. The kernel, therefore, implicitly switches the stack from one process to another and a return-from-trap will start/resume executing another process based on the new kernel stack pointer. 
 
-![Screenshot 2024-10-15 at 9.04.18 PM.png](3%20Limited%20Direct%20Execution%202669f918182944ee87a62f49dc3c03f9/Screenshot_2024-10-15_at_9.04.18_PM.png)
+![Screenshot 2024-10-15 at 9.04.18 PM.png](static/Screenshot_2024-10-15_at_9.04.18_PM.png)

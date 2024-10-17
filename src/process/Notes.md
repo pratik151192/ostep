@@ -29,7 +29,7 @@ Should provide APIs to create, destroy, wait, pause, resume, list status
 
 Process Creation
 
-![Screenshot 2024-09-16 at 10.32.05 PM.png](1%20Processes%20634a68373e1c436bb9d0908ad656e819/Screenshot_2024-09-16_at_10.32.05_PM.png)
+![Screenshot 2024-09-16 at 10.32.05 PM.png](static/Screenshot_2024-09-16_at_10.32.05_PM.png)
 
 - OS loads the program stored on disk or other flash memory
 - OS allocates the address space for the run-time stack (to keep vars, return address etc).
