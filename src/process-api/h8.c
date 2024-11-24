@@ -24,9 +24,10 @@ int main() {
         close(pi_pe[0]);
         // dup will redirect STDOUT to our pipe
         dup2(pi_pe[1], STDOUT_FILENO); 
-        close(pi_pe[1]);
+        
         // write to pipe
         printf("hello");
+        close(pi_pe[1]);
     } else {
         // parent enters
 
@@ -41,14 +42,17 @@ int main() {
         if (child2_pid == 0) {
             close(pi_pe[1]);
             dup2(pi_pe[0], STDIN_FILENO);
-            close(pi_pe[0]);
+            
 
             char buf[6];
             // read from pipe
             fgets(buf, sizeof(buf), stdin);
             printf("Child 2 received: %s", buf);
+            close(pi_pe[0]);
         } else {
 
+            close(pi_pe[0]);  // Close unused read end in parent
+            close(pi_pe[1]);  // Close unused write end in parent
             // parent enters again.. wait for both children to complete
             waitpid(child1_pid, NULL, 0);
             waitpid(child2_pid, NULL, 0);   
